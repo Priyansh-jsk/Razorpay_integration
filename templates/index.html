@@ -1,0 +1,30 @@
+<button id="rzp-button1">Pay with Razorpay</button>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "rzp_id", // we need to enter Key ID generated from the Dashboard
+    "amount": "{{pdata[0]}}",
+    "currency": "INR",
+    "name": "TechPoc",
+    "description": "Test Transaction",
+    "image": "https://example.com/your_logo",
+    "order_id": "{{pdata[1]}}",
+    "callback_url": "/success",
+    "prefill": {
+        "name": "abc**Priyah",
+        "email": "np2000@example.com",
+        "contact": "9123456789"
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#5cffab"
+    }
+};
+var rzp1 = new Razorpay(options);
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
